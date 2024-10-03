@@ -424,7 +424,7 @@ def create_pdf_receipt_with_css(user_email, total_pembayaran):
     <body>
         <div class="container">
             <div class="header">
-                <img src="https://salmahtour.my.id/wp-content/uploads/2024/09/logo-salmah-300x300.jpg" alt="Logo Salmah Tour">
+                <img src="{{ url_for('static', filename='logo-salmah-300x300.jpg') }}" alt="Logo Salmah Tour">
                 <h1>Kwitansi Pembayaran</h1>
             </div>
 
