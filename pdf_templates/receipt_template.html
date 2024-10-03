@@ -76,9 +76,9 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://salmahtour.my.id/wp-content/uploads/2024/09/logo-salmah-300x300.jpg" alt="Logo Salmah Tour">
-            <h1>Kwitansi Pembayaran</h1>
-        </div>
+    <img src="{{ url_for('static', filename='logo-salmah-300x300.jpg') }}" alt="Logo Salmah Tour">
+    <h1>Kwitansi Pembayaran</h1>
+</div>
 
         <p>Email: {{ email }}</p>
         <p>Total Pembayaran: <span class="total">Rp {{ total_pembayaran }}</span></p>
