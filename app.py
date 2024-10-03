@@ -12,8 +12,6 @@ from werkzeug.utils import secure_filename
 from oauthlib.oauth2 import WebApplicationClient
 import pdfkit
 
-# Path ke wkhtmltopdf di Windows
-pdfkit_config = pdfkit.configuration(wkhtmltopdf='/app/bin/wkhtmltopdf')
 
 # Izinkan penggunaan HTTP untuk pengembangan lokal
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
@@ -162,7 +160,7 @@ def login():
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
     request_uri = client.prepare_request_uri(
         authorization_endpoint,
-        redirect_uri=request.base_url + "/callback",
+        redirect_uri="http://127.0.0.1:5000/login/callback",  # Pastikan ini sesuai dengan yang didaftarkan
         scope=["openid", "https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"]
     )
     return redirect(request_uri)
@@ -340,7 +338,7 @@ import pdfkit
 from flask import render_template_string
 
 # Path ke wkhtmltopdf di Windows
-pdfkit_config = pdfkit.configuration(wkhtmltopdf='C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe')
+pdfkit_config = pdfkit.configuration(wkhtmltopdf='/app/bin/wkhtmltopdf')
 
 # Fungsi untuk membuat PDF kwitansi dari template HTML yang sudah dirender
 def create_pdf_receipt_with_css(user_email, total_pembayaran):
@@ -558,6 +556,6 @@ def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 if __name__ == "__main__":
-    if not os.path.exists(UPLOAD_FOLDER):
-        os.makedirs(UPLOAD_FOLDER)
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
+
