@@ -160,7 +160,7 @@ def login():
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
     request_uri = client.prepare_request_uri(
         authorization_endpoint,
-        redirect_uri="http://127.0.0.1:5000/login/callback",  # Pastikan ini sesuai dengan yang didaftarkan
+        redirect_uri="https://umroh-3c5e37c659bd.herokuapp.com/login/callback",  # Pastikan ini sesuai dengan yang didaftarkan
         scope=["openid", "https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"]
     )
     return redirect(request_uri)
