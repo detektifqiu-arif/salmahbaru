@@ -13,7 +13,7 @@ from oauthlib.oauth2 import WebApplicationClient
 import pdfkit
 
 # Path ke wkhtmltopdf di Windows
-pdfkit_config = pdfkit_config = pdfkit.configuration()
+pdfkit_config = pdfkit.configuration(wkhtmltopdf='/app/bin/wkhtmltopdf')
 
 # Izinkan penggunaan HTTP untuk pengembangan lokal
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
